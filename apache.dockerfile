@@ -4,6 +4,9 @@
 
 FROM php:8.0-apache
 
+# Enable mod rewrite
+RUN a2enmod rewrite
+
 # Enable pdo mysql
 RUN docker-php-ext-install pdo_mysql && docker-php-ext-enable pdo_mysql
 RUN apt-get update && apt-get upgrade -y
