@@ -1,0 +1,37 @@
+version: '3.8'
+
+# https://www.section.io/engineering-education/dockerized-php-apache-and-mysql-container-development-environment/
+
+services:
+  db:
+    container_name: db
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: employee
+      MYSQL_USER: casper
+      MYSQL_PASSWORD: 123
+    ports:
+      - "3306:3306"
+
+  apache:
+    container_name: apache
+    build:
+      context: .
+      dockerfile: apache.dockerfile
+    volumes:
+      - .:/var/www/html/
+    ports:
+      - '8282:80'
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - '8383:80'
+    restart: always
+    environment:
+        PMA_HOST: db
+    depends_on:
+        - db
