@@ -5492,13 +5492,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   created: function created() {
     this.getEmployees();
@@ -10712,7 +10705,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".action[data-v-3a24e604] {\n  width: 100px;\n}\n\n/* Chrome, Safari, Edge, Opera */\ninput[data-v-3a24e604]::-webkit-outer-spin-button, input[data-v-3a24e604]::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n\n/* Firefox */\ninput[type=number][data-v-3a24e604] {\n  -moz-appearance: textfield;\n}\nh2[data-v-3a24e604], h4[data-v-3a24e604] {\n  text-transform: uppercase;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".action[data-v-3a24e604] {\n  width: 100px;\n}\nh2[data-v-3a24e604], h4[data-v-3a24e604] {\n  text-transform: uppercase;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -28686,279 +28679,290 @@ var render = function () {
                 },
               },
               [
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c(
-                    "label",
-                    { staticClass: "form-label", attrs: { for: "name" } },
-                    [_vm._v("Navn")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model.trim",
-                        value: _vm.form.name,
-                        expression: "form.name",
-                        modifiers: { trim: true },
-                      },
-                    ],
-                    staticClass: "form-control",
-                    class: { "is-invalid": _vm.errors.name },
-                    attrs: {
-                      type: "text",
-                      id: "name",
-                      name: "name",
-                      required: "",
-                      minlength: "1",
-                      maxlength: "128",
-                      "aria-describedby": "feedback-name",
-                    },
-                    domProps: { value: _vm.form.name },
-                    on: {
-                      input: [
-                        function ($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "name", $event.target.value.trim())
+                _c("fieldset", { attrs: { disabled: _vm.processing } }, [
+                  _c("div", { staticClass: "row mb-3" }, [
+                    _c("div", { staticClass: "col" }, [
+                      _c(
+                        "label",
+                        { staticClass: "form-label", attrs: { for: "name" } },
+                        [_vm._v("Navn")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model.trim",
+                            value: _vm.form.name,
+                            expression: "form.name",
+                            modifiers: { trim: true },
+                          },
+                        ],
+                        staticClass: "form-control",
+                        class: { "is-invalid": _vm.errors.name },
+                        attrs: {
+                          type: "text",
+                          id: "name",
+                          name: "name",
+                          required: "",
+                          maxlength: "128",
+                          "aria-describedby": "feedback-name",
                         },
-                        function ($event) {
-                          delete _vm.errors.name
+                        domProps: { value: _vm.form.name },
+                        on: {
+                          input: [
+                            function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "name",
+                                $event.target.value.trim()
+                              )
+                            },
+                            function ($event) {
+                              delete _vm.errors.name
+                            },
+                          ],
+                          blur: function ($event) {
+                            return _vm.$forceUpdate()
+                          },
                         },
-                      ],
-                      blur: function ($event) {
-                        return _vm.$forceUpdate()
-                      },
-                    },
-                  }),
-                  _vm._v(" "),
-                  _vm.errors.name
-                    ? _c("div", {
-                        staticClass: "invalid-feedback",
-                        attrs: { id: "feedback-name" },
-                        domProps: { textContent: _vm._s(_vm.errors.name) },
-                      })
-                    : _vm._e(),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c(
-                    "label",
-                    { staticClass: "form-label", attrs: { for: "email" } },
-                    [_vm._v("Email")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model.trim",
-                        value: _vm.form.email,
-                        expression: "form.email",
-                        modifiers: { trim: true },
-                      },
-                    ],
-                    staticClass: "form-control",
-                    class: { "is-invalid": _vm.errors.email },
-                    attrs: {
-                      type: "email",
-                      id: "email",
-                      name: "email",
-                      required: "",
-                      minlength: "1",
-                      maxlength: "128",
-                      "aria-describedby": "feedback-email",
-                    },
-                    domProps: { value: _vm.form.email },
-                    on: {
-                      input: [
-                        function ($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.form,
-                            "email",
-                            $event.target.value.trim()
-                          )
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.name
+                        ? _c("div", {
+                            staticClass: "invalid-feedback",
+                            attrs: { id: "feedback-name" },
+                            domProps: { textContent: _vm._s(_vm.errors.name) },
+                          })
+                        : _vm._e(),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c(
+                        "label",
+                        { staticClass: "form-label", attrs: { for: "email" } },
+                        [_vm._v("Email")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model.trim",
+                            value: _vm.form.email,
+                            expression: "form.email",
+                            modifiers: { trim: true },
+                          },
+                        ],
+                        staticClass: "form-control",
+                        class: { "is-invalid": _vm.errors.email },
+                        attrs: {
+                          type: "email",
+                          id: "email",
+                          name: "email",
+                          required: "",
+                          maxlength: "128",
+                          "aria-describedby": "feedback-email",
                         },
-                        function ($event) {
-                          delete _vm.errors.email
+                        domProps: { value: _vm.form.email },
+                        on: {
+                          input: [
+                            function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "email",
+                                $event.target.value.trim()
+                              )
+                            },
+                            function ($event) {
+                              delete _vm.errors.email
+                            },
+                          ],
+                          blur: function ($event) {
+                            return _vm.$forceUpdate()
+                          },
                         },
-                      ],
-                      blur: function ($event) {
-                        return _vm.$forceUpdate()
-                      },
-                    },
-                  }),
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.email
+                        ? _c("div", {
+                            staticClass: "invalid-feedback",
+                            attrs: { id: "feedback-email" },
+                            domProps: { textContent: _vm._s(_vm.errors.email) },
+                          })
+                        : _vm._e(),
+                    ]),
+                  ]),
                   _vm._v(" "),
-                  _vm.errors.email
-                    ? _c("div", {
-                        staticClass: "invalid-feedback",
-                        attrs: { id: "feedback-email" },
-                        domProps: { textContent: _vm._s(_vm.errors.email) },
-                      })
-                    : _vm._e(),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c(
-                    "label",
-                    { staticClass: "form-label", attrs: { for: "phone" } },
-                    [_vm._v("Tlf.")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.phone,
-                        expression: "form.phone",
-                      },
-                    ],
-                    staticClass: "form-control",
-                    class: { "is-invalid": _vm.errors.phone },
-                    attrs: {
-                      type: "number",
-                      id: "phone",
-                      name: "phone",
-                      required: "",
-                      min: "10000000",
-                      max: "99999999",
-                      "aria-describedby": "feedback-phone",
-                    },
-                    domProps: { value: _vm.form.phone },
-                    on: {
-                      input: [
-                        function ($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "phone", $event.target.value)
+                  _c("div", { staticClass: "row mb-3" }, [
+                    _c("div", { staticClass: "col" }, [
+                      _c(
+                        "label",
+                        { staticClass: "form-label", attrs: { for: "phone" } },
+                        [_vm._v("Tlf.")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.phone,
+                            expression: "form.phone",
+                          },
+                        ],
+                        staticClass: "form-control",
+                        class: { "is-invalid": _vm.errors.phone },
+                        attrs: {
+                          type: "tel",
+                          id: "phone",
+                          name: "phone",
+                          required: "",
+                          minlength: "8",
+                          maxlength: "8",
+                          "aria-describedby": "feedback-phone",
                         },
-                        function ($event) {
-                          delete _vm.errors.phone
+                        domProps: { value: _vm.form.phone },
+                        on: {
+                          input: [
+                            function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "phone", $event.target.value)
+                            },
+                            function ($event) {
+                              delete _vm.errors.phone
+                            },
+                          ],
                         },
-                      ],
-                    },
-                  }),
-                  _vm._v(" "),
-                  _vm.errors.phone
-                    ? _c("div", {
-                        staticClass: "invalid-feedback",
-                        attrs: { id: "feedback-phone" },
-                        domProps: { textContent: _vm._s(_vm.errors.phone) },
-                      })
-                    : _vm._e(),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-label",
-                      attrs: { for: "position_id" },
-                    },
-                    [_vm._v("Stilling")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.phone
+                        ? _c("div", {
+                            staticClass: "invalid-feedback",
+                            attrs: { id: "feedback-phone" },
+                            domProps: { textContent: _vm._s(_vm.errors.phone) },
+                          })
+                        : _vm._e(),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col" }, [
+                      _c(
+                        "label",
                         {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.position_id,
-                          expression: "form.position_id",
+                          staticClass: "form-label",
+                          attrs: { for: "position_id" },
                         },
-                      ],
-                      staticClass: "form-select",
-                      class: { "is-invalid": _vm.errors.position_id },
-                      attrs: {
-                        "aria-label": "Stilling",
-                        required: "",
-                        "aria-describedby": "feedback-position_id",
-                      },
-                      on: {
-                        input: function ($event) {
-                          delete _vm.errors.position_id
+                        [_vm._v("Stilling")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.position_id,
+                              expression: "form.position_id",
+                            },
+                          ],
+                          staticClass: "form-select",
+                          class: { "is-invalid": _vm.errors.position_id },
+                          attrs: {
+                            "aria-label": "Stilling",
+                            required: "",
+                            "aria-describedby": "feedback-position_id",
+                          },
+                          on: {
+                            input: function ($event) {
+                              delete _vm.errors.position_id
+                            },
+                            change: function ($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function (o) {
+                                  return o.selected
+                                })
+                                .map(function (o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.form,
+                                "position_id",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            },
+                          },
                         },
-                        change: function ($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function (o) {
-                              return o.selected
-                            })
-                            .map(function (o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.form,
-                            "position_id",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
+                        _vm._l(_vm.positions, function (position) {
+                          return _c(
+                            "option",
+                            {
+                              key: position.id,
+                              domProps: { value: position.id },
+                            },
+                            [_vm._v(_vm._s(position.title))]
                           )
-                        },
+                        }),
+                        0
+                      ),
+                      _vm._v(" "),
+                      _vm.errors.position_id
+                        ? _c("div", {
+                            staticClass: "invalid-feedback",
+                            attrs: { id: "feedback-position_id" },
+                            domProps: {
+                              textContent: _vm._s(_vm.errors.position_id),
+                            },
+                          })
+                        : _vm._e(),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-12" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary action",
+                        attrs: { type: "submit" },
                       },
-                    },
-                    _vm._l(_vm.positions, function (position) {
-                      return _c(
-                        "option",
-                        { key: position.id, domProps: { value: position.id } },
-                        [_vm._v(_vm._s(position.title))]
-                      )
-                    }),
-                    0
-                  ),
-                  _vm._v(" "),
-                  _vm.errors.position_id
-                    ? _c("div", {
-                        staticClass: "invalid-feedback",
-                        attrs: { id: "feedback-position_id" },
-                        domProps: {
-                          textContent: _vm._s(_vm.errors.position_id),
-                        },
-                      })
-                    : _vm._e(),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-12" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary action",
-                      attrs: { type: "submit", disabled: _vm.processing },
-                    },
-                    [
-                      _vm.processing
-                        ? _c("span", {
-                            staticClass: "spinner-border spinner-border-sm",
-                            attrs: { "aria-hidden": "true" },
-                          })
-                        : _c("span", [_vm._v("Opret")]),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-success action float-end",
-                      attrs: { type: "button", disabled: _vm.processing },
-                      on: { click: _vm.fillRandom },
-                    },
-                    [
-                      _vm.processing
-                        ? _c("span", {
-                            staticClass: "spinner-border spinner-border-sm",
-                            attrs: { "aria-hidden": "true" },
-                          })
-                        : _c("span", [_vm._v("random()")]),
-                    ]
-                  ),
+                      [
+                        _vm.processing
+                          ? _c("span", {
+                              staticClass: "spinner-border spinner-border-sm",
+                              attrs: { "aria-hidden": "true" },
+                            })
+                          : _c("span", [_vm._v("Opret")]),
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success action float-end",
+                        attrs: { type: "button" },
+                        on: { click: _vm.fillRandom },
+                      },
+                      [
+                        _vm.processing
+                          ? _c("span", {
+                              staticClass: "spinner-border spinner-border-sm",
+                              attrs: { "aria-hidden": "true" },
+                            })
+                          : _c("span", [_vm._v("random()")]),
+                      ]
+                    ),
+                  ]),
                 ]),
               ]
             ),

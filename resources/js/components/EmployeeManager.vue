@@ -3,20 +3,6 @@
   width: 100px;
 }
 
-/* Chrome, Safari, Edge, Opera */
-input {
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-}
-
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
 h2, h4 {
   text-transform: uppercase;
 }
@@ -66,49 +52,56 @@ h2, h4 {
 
                     <div class="card-body">
                         <form class="row g-3 needs-validation" v-on:submit.prevent="createEmployee">
-                            <div class="col-md-6">
-                                <label for="name" class="form-label">Navn</label>
-                                <input type="text" class="form-control" id="name" name="name" v-model.trim="form.name"
-                                    required minlength="1" maxlength="128"
-                                    :class="{ 'is-invalid': errors.name }" aria-describedby="feedback-name" @input="delete errors.name">
-                                    <div id="feedback-name" class="invalid-feedback" v-if="errors.name" v-text="errors.name"></div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control"
-                                    id="email" name="email" v-model.trim="form.email"
-                                    required minlength="1" maxlength="128"
-                                    :class="{ 'is-invalid': errors.email }" aria-describedby="feedback-email" @input="delete errors.email">
-                                    <div id="feedback-email" class="invalid-feedback" v-if="errors.email" v-text="errors.email"></div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="phone" class="form-label">Tlf.</label>
-                                <input type="number" class="form-control" id="phone" name="phone" v-model="form.phone"
-                                    required min="10000000" max="99999999"
-                                    :class="{ 'is-invalid': errors.phone }" aria-describedby="feedback-phone" @input="delete errors.phone">
-                                    <div id="feedback-phone" class="invalid-feedback" v-if="errors.phone" v-text="errors.phone"></div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="position_id" class="form-label">Stilling</label>
-                                <select class="form-select" aria-label="Stilling" v-model="form.position_id"
-                                    required
-                                    :class="{ 'is-invalid': errors.position_id }" aria-describedby="feedback-position_id" @input="delete errors.position_id">
-                                    <option v-for="position in positions" :value="position.id" :key="position.id">{{ position.title }}</option>
-                                </select>
-                                <div id="feedback-position_id" class="invalid-feedback" v-if="errors.position_id" v-text="errors.position_id"></div>
-                            </div>
+                            <fieldset :disabled="processing">
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <label for="name" class="form-label">Navn</label>
+                                        <input type="text" class="form-control" id="name" name="name" v-model.trim="form.name"
+                                            required maxlength="128"
+                                            :class="{ 'is-invalid': errors.name }" aria-describedby="feedback-name" @input="delete errors.name">
+                                            <div id="feedback-name" class="invalid-feedback" v-if="errors.name" v-text="errors.name"></div>
+                                    </div>
+                                    <div class="col">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control"
+                                            id="email" name="email" v-model.trim="form.email"
+                                            required maxlength="128"
+                                            :class="{ 'is-invalid': errors.email }" aria-describedby="feedback-email" @input="delete errors.email">
+                                            <div id="feedback-email" class="invalid-feedback" v-if="errors.email" v-text="errors.email"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <label for="phone" class="form-label">Tlf.</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone" v-model="form.phone"
+                                            required minlength="8" maxlength="8"
+                                            :class="{ 'is-invalid': errors.phone }" aria-describedby="feedback-phone" @input="delete errors.phone">
+                                            <div id="feedback-phone" class="invalid-feedback" v-if="errors.phone" v-text="errors.phone"></div>
+                                    </div>
+                                    <div class="col">
+                                        <label for="position_id" class="form-label">Stilling</label>
+                                        <select class="form-select" aria-label="Stilling" v-model="form.position_id"
+                                            required
+                                            :class="{ 'is-invalid': errors.position_id }" aria-describedby="feedback-position_id" @input="delete errors.position_id">
+                                            <option v-for="position in positions" :value="position.id" :key="position.id">{{ position.title }}</option>
+                                        </select>
+                                        <div id="feedback-position_id" class="invalid-feedback" v-if="errors.position_id" v-text="errors.position_id"></div>
+                                    </div>
+                                </div>
+                               
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary action">
+                                        <span v-if="processing" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                                        <span v-else>Opret</span>
+                                    </button>
 
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary action" :disabled="processing">
-                                    <span v-if="processing" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
-                                    <span v-else>Opret</span>
-                                </button>
-
-                                <button type="button" class="btn btn-success action float-end" :disabled="processing" @click="fillRandom">
-                                    <span v-if="processing" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
-                                    <span v-else>random()</span>
-                                </button>
-                            </div>
+                                    <button type="button" class="btn btn-success action float-end" @click="fillRandom">
+                                        <span v-if="processing" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                                        <span v-else>random()</span>
+                                    </button>
+                                </div>
+                            </fieldset>
                         </form>
                     </div>
                 </div>
