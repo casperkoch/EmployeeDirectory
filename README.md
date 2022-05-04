@@ -21,3 +21,4 @@ Start Docker containers
 Migrate database
 
 `php artisan migrate:fresh --seed`
+---
