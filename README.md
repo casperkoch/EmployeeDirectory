@@ -22,3 +22,4 @@ Migrate database
 
 `php artisan migrate:fresh --seed`
 ---
+---2
